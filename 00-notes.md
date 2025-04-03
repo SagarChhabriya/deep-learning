@@ -317,3 +317,8 @@ This flexibility makes it adaptable to:
 
 ### **Visualization:**
 ![](assets/perceptron-trick.gif)
+
+
+# 5. Multi Layer Perceptron
+- MLP Notation
+   - Trainable parameters 
