@@ -193,21 +193,24 @@ This eliminates the need for manual feature engineering, allowing models to lear
 
 2. **Forward Pass**:  
    - Compute the weighted sum: $z = \sum (w_i x_i) + b$.  
-   - Apply the **step function** (activation):  
-    $$
+   - Apply the **step function** (activation):
+     
+$$
      \text{Output} = 
      \begin{cases} 
      1 & \text{if } z \geq 0, \\
      0 & \text{otherwise}.
      \end{cases}
-    $$
+$$
 
 3. **Weight Update Rule**:  
-   - For misclassified samples, adjust weights and bias:  
-    $$
+   - For misclassified samples, adjust weights and bias:
+     
+$$
      w_i = w_i + \alpha \cdot (y - \hat{y}) \cdot x_i, \quad b = b + \alpha \cdot (y - \hat{y})
-    $$  
-     where $\alpha$ = learning rate, $y$ = true label, $\hat{y}$ = predicted label.  
+$$  
+   
+   where $\alpha$ = learning rate, $y$ = true label, $\hat{y}$ = predicted label.  
 
 4. **Convergence**:  
    - Guaranteed only if data is **linearly separable** (Rosenblatt, 1958).  
@@ -264,10 +267,12 @@ A geometric approach to iteratively adjust the decision boundary for misclassifi
      **New weights** = Old weights - x  
      (Moves boundary *away* from the point)
 
-2. Mathematical Form:  
-   $$
+2. Mathematical Form:
+   
+$$
    w_{new} = w_{old} + \alpha \cdot (y - \hat{y}) \cdot x
-   $$
+$$
+
    Where α = learning rate (typically 1 for standard perceptron)
 
 ## **4.2 Training Process**
@@ -377,9 +382,11 @@ Key principle: *"You can't improve what you can't measure"* - loss functions pro
 
 ### **I. Regression Tasks**
 1. **Mean Squared Error (MSE/L2 Loss)**
-   $$
+
+$$
    \text{MSE} = \frac{1}{n}\sum_{i=1}^n(y_i - \hat{y}_i)^2
-   $$
+$$
+
    - *Advantages*:
      - Differentiable (enables gradient descent)
      - Convex (single global minimum)
@@ -387,48 +394,58 @@ Key principle: *"You can't improve what you can't measure"* - loss functions pro
      - Sensitive to outliers
      - Squared units complicate interpretation
 
-2. **Mean Absolute Error (MAE/L1 Loss)**
-   $$
+3. **Mean Absolute Error (MAE/L1 Loss)**
+
+$$
    \text{MAE} = \frac{1}{n}\sum_{i=1}^n|y_i - \hat{y}_i|
-   $$
+$$
+
    - *Advantages*:
      - Robust to outliers
      - Maintains original units
    - *Disadvantages*:
      - Non-differentiable at zero
 
-3. **Huber Loss**
-   $$
+5. **Huber Loss**
+
+$$
    L_\delta = \begin{cases} 
    \frac{1}{2}(y - \hat{y})^2 & \text{for } |y - \hat{y}| \leq \delta \\
    \delta|y - \hat{y}| - \frac{1}{2}\delta^2 & \text{otherwise}
    \end{cases}
-   $$
+$$
+   
    - Hybrid approach: MSE for small errors, MAE for large errors
    - Combines benefits of both MSE and MAE
 
 ### **II. Classification Tasks**
 1. **Binary Cross-Entropy (BCE)**
-   $$
+
+$$
    L = -\frac{1}{n}\sum_{i=1}^n[y_i\log(\hat{y}_i) + (1-y_i)\log(1-\hat{y}_i)]
-   $$
+$$
+
    - *Requirements*:
      - Sigmoid activation in output layer
      - Binary labels (0 or 1)
 
-2. **Categorical Cross-Entropy (CCE)**
-   $$
+3. **Categorical Cross-Entropy (CCE)**
+
+$$
    L = -\sum_{i=1}^C y_i \log(\hat{y}_i)
-   $$
+$$
+   
    - For multi-class problems
    - Requires Softmax activation
    - *Variants*:
      - **Sparse CCE**: Uses integer labels instead of one-hot encoding
 
-3. **Hinge Loss**
-   $$
+5. **Hinge Loss**
+
+$$
    L = \max(0, 1 - y_i\cdot \hat{y}_i)
-   $$
+$$
+   
    - Used in SVMs and some neural networks
    - Creates maximum-margin classification
 
@@ -464,5 +481,3 @@ Key principle: *"You can't improve what you can't measure"* - loss functions pro
 - Modern frameworks (TensorFlow/PyTorch) provide built-in loss functions
 - Custom losses can be implemented for specialized tasks
 - Regularization terms (L1/L2) are often added to loss functions
-
-This structured presentation organizes loss functions by task type, provides mathematical formulations, and offers practical guidance for selection while maintaining professional rigor. The comparative tables facilitate quick reference during model development.
