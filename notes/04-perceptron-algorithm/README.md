@@ -64,4 +64,4 @@ This flexibility makes it adaptable to:
 - Serves as the prototype for more complex neural architectures
 
 ### **Visualization:**
-![](assets/perceptron-trick.gif)
+![](../assets/perceptron-trick.gif)
