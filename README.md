@@ -16,7 +16,7 @@ updated daily!!! Stay Tuned😊
 11. cheat sheet:  [stanford cheatsheetML ](https://stanford.edu/~shervine/teaching/cs-229/cheatsheet-machine-learning-tips-and-tricks)
 12. cheat sheet: [stanford cheatsheet DL](https://stanford.edu/~shervine/teaching/cs-229/cheatsheet-deep-learning)
 13. paper: [Backpropagation](https://cklixx.people.wm.edu/teaching/math400/Annette-paper.pdf)
-
+14. paper: [Dropout Layer](https://jmlr.org/papers/volume15/srivastava14a/srivastava14a.pdf)
 
 
 
