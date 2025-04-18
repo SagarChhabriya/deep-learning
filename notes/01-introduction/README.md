@@ -52,3 +52,11 @@ This eliminates the need for manual feature engineering, allowing models to lear
      - **Image Translation:** Pix2Pix  
      - **Object Detection:** YOLO  
      - **Speech Synthesis:** WaveNet 
+
+
+review results
+
+
+
+
+
