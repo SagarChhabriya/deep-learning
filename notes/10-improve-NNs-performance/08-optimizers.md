@@ -1,78 +1,156 @@
-Performance of NN:
-Previously we learned: How can we improve the Performance and Speed up the training of NN
+## Performance of Neural Networks
 
-Speed Up Techniques that we have learned so far:
-Weigh initialization
-Batch Normalization
-Activation Function
+Previously, we discussed how we can improve the performance and speed up the training of Neural Networks (NN). So far, we have covered several techniques that help enhance both performance and training efficiency:
 
-and No we are going to learn optimizers
+### Speed Up Techniques We Have Learned So Far:
 
-## 8.1. Intro to Optimizers
+- Weight Initialization
+- Batch Normalization
+- Activation Functions
 
-- **Role of Optimizer**:
-The goal is to minimize the loss
+Now, let's delve into **Optimizers**, another key aspect of improving neural network performance.
 
+---
+
+## 8.1. Introduction to Optimizers
+
+[Repo + App: DL Optimizers Visualizer](https://github.com/lilipads/gradient_descent_viz/)
+
+### Role of the Optimizer
+
+The primary goal of an optimizer is to minimize the **loss function**, i.e., to improve the performance of the model by updating the weights to reduce the loss.
+
+---
 
 ## 8.2 Types of Optimizers
-- Batch GD
-- Stochastic  GD
-- Mini Batch GD
 
+- **Batch Gradient Descent (Batch GD)**: Involves computing the gradient of the entire dataset.
+- **Stochastic Gradient Descent (SGD)**: Updates weights using only a single random sample at a time.
+- **Mini-batch Gradient Descent**: A compromise between the previous two, using a small batch of data to compute the gradient.
 
-## 8.3 Challenges
-1. Learning Rate
-2. Learning Rate Scheduling
-3. If the Loss function is n-dimensional then we have n directions of slope movement and all the directions has same learning rate. That is also a challenge that we don't need the same learning rate in all dimesions
-4. Local Minima: In Complex Scenarios your algo get stuck on local minima some how the Stochastic gradient solves this problem somehow but there is a huge probability that your algorithm get stuck. You might have to work with sub-optimim solution
-5. Saddle Point: Where the slope of one point goes upper and another's to downward.
+---
 
-These are the challenges in the Conventional gradient descent although we can have a solution but it may have caused with slow training or its a sub optimal solution. That is why need to study some other optimizers.
+## 8.3 Challenges in Gradient Descent
 
-1. Momentum
-2. Adagrade
-3. NAG
-4. RMSprop
-5. Adam
+There are several challenges when using traditional gradient descent methods:
 
------
+1. **Learning Rate**: A wrong learning rate can cause either slow convergence or failure to converge.
+2. **Learning Rate Scheduling**: Finding the optimal schedule for updating the learning rate during training can be tricky.
+3. **N-Dimensional Loss Functions**: When the loss function is n-dimensional, gradients in all directions might need different learning rates, making it hard to use the same learning rate for all dimensions.
+4. **Local Minima**: In complex optimization landscapes, algorithms can get stuck in local minima. Stochastic gradient descent helps to escape local minima, but there is still a high probability of converging to suboptimal solutions.
+5. **Saddle Points**: These are points where the gradient slopes upward in some directions and downward in others, causing difficulty in optimization.
 
-## Exponentially Weighted Moving Average or Weighted Average
-A technique to find the hidden trend in time series data
-Formula:
+Although conventional gradient descent can work, it often leads to slow training or suboptimal solutions. This is where more advanced optimizers come in.
 
-Day1 --> Avg
-Day2 --> Avg
-Day3 --> Avg
-Day4 --> Avg
-Day5 --> Avg
+### Advanced Optimizers:
 
-The weight of avg 3 will greater than of 1,2, and weight of avg 5 will be greater than its previous. This is a point should be noted before studying EWMA
+1. **Momentum**  
+2. **AdaGrad**  
+3. **Nesterov Accelerated Gradient (NAG)**  
+4. **RMSprop**  
+5. **Adam**  
 
-V_t = betaV_t-1 + (1-beta) theta_t
+---
 
-V_t weighted average at a instance like day3
-beta is constant varying between 0 and 1
+## Exponentially Weighted Moving Average (EWMA)
 
+Exponentially Weighted Moving Average (EWMA) is a technique used to find hidden trends in time-series data. The weight of recent values increases exponentially, meaning that the average for more recent values is more influential.
 
+### Formula:
+
+$$
+V_t = \beta V_{t-1} + (1 - \beta) \cdot \theta_t
+$$
+
+Where:
+- $V_t$ is the weighted average at the current time step.
+- $\beta$ is a constant between 0 and 1 (controls the weighting factor).
+- $\theta_t$ is the current value.
+
+### Intuition:
+As you move forward in time, the weight of each new value increases, so the most recent data points have the greatest influence on the moving average.
+
+---
 
 ## 1. SGD with Momentum (Momentum Optimization)
 
-Non-Convex Optimization | Why Momentum
-- high curvature
-- consitent gradient 
-- Noisy gradient 
+### Non-Convex Optimization & Why Momentum?
 
+Momentum is used to accelerate optimization, particularly in scenarios with high curvature or noisy gradients. It helps to smooth out updates and avoid oscillations.
 
-## What?
-Common example:
-If you have to go to point B from A. And on the way you ask from 4 person that what is the route of B and all those pointed to the same direction →. So you will move fast in the very direction →. But what if two of them said → and two said ← and you are moving in → direction. Although 2 vs 2 and you are still moving in → direction but not that fast because of doubt. 
+### How it Works:
 
-From physics perspective: Consider a ball coming dowm from a parabola like shape as it moves toward down it speeds up. 
+Consider a situation where you're trying to move from point A to point B. If you ask four people for directions and two say "go right" and two say "go left", you may still move right but with less confidence. Momentum helps you maintain a stronger direction even when conflicting gradients appear.
 
-![](../assets/24-sgd-momentum.png)
+From a physics perspective, think of a ball rolling down a parabola-like surface. As it moves down, it speeds up due to momentum. This concept is translated into optimization to accelerate convergence and smooth out the learning trajectory.
 
+![SGD with Momentum](../assets/24-sgd-momentum.png)
 
-## Nesterov Accelerated Gradient (NAG)
+---
 
-Solve the issue of 
+## 2. Nesterov Accelerated Gradient (NAG)
+
+Nesterov Accelerated Gradient is an improvement over regular momentum, designed to address oscillations in the optimization path. It anticipates the future gradients based on momentum, which allows it to correct the path more effectively.
+
+### Code Example:
+```python
+tf.keras.optimizers.SGD(
+    learning_rate=0.01, momentum=0.0, nesterov=False, name="SGD", **kwargs
+)
+```
+
+- **SGD**: Momentum parameter = 0, Nesterov = False
+- **SGD with Momentum**: Momentum = 0.9, Nesterov = False
+- **SGD with Nesterov**: Momentum = 0.9, Nesterov = True
+
+---
+
+## 3. AdaGrad
+
+### Adaptive Gradient and Dynamic Learning Rate:
+
+AdaGrad adjusts the learning rate for each parameter based on its historical gradient. It is especially useful when the features of the input data have different scales or when the features are sparse (leading to problems like the "elongated bowl" problem).
+
+#### Advantages:
+- Ideal for problems with sparse data (e.g., sparse matrices).
+- Automatically adapts to feature-specific learning rates.
+
+#### Disadvantage:
+- AdaGrad's learning rate diminishes too quickly, meaning that after a certain number of updates, it can "stall" and fail to converge to the optimal solution.
+
+### Intuition: 
+In problems with sparse data, the contour plot tends to be elongated, meaning that gradients can be large in one direction and small in another. AdaGrad compensates by dynamically adjusting learning rates for each direction.
+
+---
+
+## 4. RMSprop
+
+### Root Mean Square Propagation (RMSprop):
+
+RMSprop is an improvement over AdaGrad and helps address the rapid decay of the learning rate. It divides the learning rate by an exponentially decaying average of squared gradients, allowing for more efficient convergence.
+
+#### Disadvantage:
+While RMSprop improves on AdaGrad's learning rate decay, it still faces challenges in very noisy optimization landscapes. However, it provides better convergence speed and stability.
+
+---
+
+## 5. Adam (Adaptive Moment Estimation)
+
+Adam combines the advantages of both momentum and adaptive learning rate decay. It maintains running averages of both the gradients and the squared gradients and uses these to adaptively adjust the learning rate.
+
+### Adam's Key Features:
+- **Momentum**: Helps accelerate convergence by remembering past gradients.
+- **Adaptive Learning Rates**: Adjusts learning rates based on the variance of the gradients.
+
+Adam is widely regarded as one of the most powerful optimizers because it combines the best of both worlds: **momentum** and **learning rate decay**. It works well in many different scenarios, making it the go-to optimizer for a variety of deep learning tasks.
+
+---
+
+### Summary
+
+- **Momentum and NAG**: Focus on accelerating the optimization process using momentum.
+- **AdaGrad and RMSProp**: Focus on adjusting the learning rate based on the gradients.
+- **Adam**: A combination of both momentum and learning rate decay, making it the most powerful and widely used optimizer.
+
+These optimizers help address the challenges associated with conventional gradient descent, improving training speed, convergence, and stability.
+
