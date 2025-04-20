@@ -161,9 +161,13 @@ In Keras:
 - **Valid Padding**: No padding, the traditional method.
 - **Same Padding**: Keras automatically finds the optimal padding.
 
+![](../assets/29-same-padding.gif)
+
 #### Strides
 
 Strides control how much the kernel moves over the image. The stride determines how much the filter shifts during each operation.
+
+![](../assets/28-stride.gif)
 
 - A stride of $(1, 1)$ means the kernel moves one step at a time in both horizontal and vertical directions.
 - Larger strides reduce the feature map size, making the model more computationally efficient but potentially losing some details.
@@ -176,8 +180,89 @@ $$
 
 Where $s$ is the stride size.
 
+
 ### Pooling Layer
 
-The **Pooling Layer** reduces the size of the feature map and retains important information. It helps in reducing computation and preventing overfitting. There are two types of pooling:
-- **Max Pooling**: Takes the maximum value from a patch of the feature map.
-- **Average Pooling**: Takes the average value from a patch of the feature map.
+The **Pooling Layer** is a crucial part of Convolutional Neural Networks (CNNs) used to reduce the size of the feature map while retaining important information. Pooling helps in reducing computation time, memory requirements, and overfitting. It also makes the model invariant to small translations of the input image.
+
+#### Problems with Convolution:
+
+1. **Memory Issues**: Convolution operations, especially on large images, can consume significant memory and may cause crashes or slow down processing.
+2. **Translation Variance**: Convolution might be sensitive to small translations (shifts) in the image. Pooling helps in reducing this issue.
+
+#### Types of Pooling:
+There are different types of pooling techniques:
+- **Max Pooling**: Takes the maximum value from a patch of the feature map. This helps in retaining the most prominent features.
+- **Average Pooling**: Takes the average value from a patch of the feature map. This provides a smoother representation of features.
+- **Min Pooling**: Takes the minimum value from a patch of the feature map.
+- **L2 Pooling**: Uses the L2 norm to summarize the feature map.
+- **Global Pooling**: Reduces the entire feature map into a single scalar value.
+
+When configuring pooling, you need to specify:
+- **Size** of the pooling window (e.g., 2x2).
+- **Stride** (how much the window shifts).
+- **Type** of pooling (max, average, etc.).
+
+#### MaxPooling:
+- **Trainable Parameters**: 0 (No parameters are learned because it simply selects the maximum value from a given window of the feature map).
+
+#### Advantages of Pooling:
+1. **Reduced Size**: Pooling reduces the size of the feature map, decreasing the number of computations and memory usage.
+2. **Translation Invariance**: Pooling makes the model invariant to small translations (shifts) of the object within the image.
+3. **Enhanced Features**: In **MaxPooling**, the dominant features from the local receptive field are retained, making the features stronger.
+4. **No Training Needed in MaxPooling**: MaxPooling doesn't require any training to find the maximum value; it simply picks the largest value within each patch. This makes it computationally efficient and fast since there is no backpropagation involved in MaxPooling.
+
+#### Pooling Types:
+
+1. **Max Pooling**: Selects the maximum value from each patch.
+2. **Average Pooling**: Computes the average value from each patch.
+3. **Global Pooling**:
+   - **Global Max Pooling**: Reduces the entire feature map into a scalar by taking the maximum value across the entire map.
+   - **Global Average Pooling**: Computes the average value of all the numbers in the feature map.
+
+For example, if you have 3 feature maps of size 4x4:
+- Input: 4x4x3
+- Output: 1x3 (after performing global pooling)
+
+#### Global Pooling Use Case:
+- Global pooling is often used before flattening the feature map to feed it into fully connected layers. This can help in reducing overfitting and preventing the model from becoming too complex.
+
+#### Disadvantages of Pooling:
+- **Translation Variance**: Pooling makes the network less sensitive to the precise location of features in the image. This is helpful for classification tasks but problematic for tasks where the exact location of an object is important (e.g., **object segmentation**).
+- For tasks like **image segmentation**, where pixel-level predictions are needed, pooling can lose important spatial information. Hence, pooling is generally avoided in segmentation tasks.
+
+---
+
+### CNN Architecture | LeNet-5 by Yann LeCun
+
+LeNet-5 is one of the pioneering CNN architectures developed by Yann LeCun, primarily designed for handwritten digit recognition (MNIST). It utilizes the following components:
+1. **Convolution Layers**: To extract features from the image.
+2. **Pooling Layers**: To reduce the spatial dimensions of the image and keep important features.
+3. **Fully Connected (FC) Layers**: To perform classification based on the extracted features.
+
+LeNet-5 architecture includes:
+- **Input**: 32x32 grayscale image.
+- **Convolutional Layer**: Feature extraction.
+- **Subsampling (Pooling) Layer**: Downsampling to reduce dimensionality.
+- **Fully Connected Layer**: For classification.
+
+#### ImageNet Competition
+Over the years, several CNN architectures have been developed and used for large-scale image classification tasks, such as those in the ImageNet competition. These architectures include:
+
+1. **LeNet-5**: Early CNN architecture for digit recognition.
+2. **AlexNet**: A deeper and more powerful architecture that won the ImageNet competition in 2012.
+3. **GoogleNet (Inception)**: Introduced the Inception module, allowing for more efficient and scalable networks.
+4. **VGGNet**: Known for its simple and deep architecture with small filters (3x3) throughout.
+5. **ResNet**: Introduced residual connections to overcome the vanishing gradient problem in deep networks.
+6. **Inception**: A more complex network with multiple parallel convolutional operations.
+
+---
+
+### CNN vs ANN (Artificial Neural Network)
+
+- **CNN (Convolutional Neural Network)**: Specifically designed for processing grid-like data (e.g., images) and extracting hierarchical features (e.g., edges, textures, shapes). CNNs use convolutional layers, pooling layers, and fully connected layers to perform tasks like classification and object detection.
+  
+- **ANN (Artificial Neural Network)**: A general-purpose neural network model that uses fully connected layers to process input data. While an ANN can be used on image data, it is less efficient compared to CNNs because it does not leverage spatial information and requires more parameters.
+
+**Key Difference**: 
+- CNNs are more specialized for image data and efficiently extract spatial features using convolution and pooling layers, whereas ANNs are more general and require a lot of parameters for image processing tasks.
