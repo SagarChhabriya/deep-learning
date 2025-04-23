@@ -37,6 +37,8 @@ An analogy is the human brain's visual cortex, which detects simple features lik
 
 CNNs use convolutional operations to detect patterns in images. A **kernel** (or filter) slides over the image to compute the feature map.
 
+![](../assets/33-kernel.gif)
+
 #### Example: Edge Detection
 
 - **Vertical Edges + Horizontal Edges**: For example, detecting edges in a car image.
@@ -85,10 +87,9 @@ In deep learning, you don't need to manually design these kernels. Instead, the 
     - Image (28 x 28 ) * kernal (3 x 3) = Feature Map (26 x 26)
     - Image (n  x  n ) * kernal (m x m) = Feature Map (n - m +1 ) x (n - m + 1) 
 
+- **Filter Working Demo**
+![](../assets/34-filter-working-demo.gif)
 
-- Working with RGB Images
-In case of RGB the kernal becomes 3 x 3 x 3
-![](../assets/25-cnn-rgb.png)
 
 
 ### Convolution Formula
@@ -109,6 +110,12 @@ In RGB images, the kernel is 3D, with dimensions corresponding to the three colo
 
 - **RGB Image Example**: An image of size 288 x 228 x 3 (height x width x channels).
 - The kernel in this case will have dimensions $3 \times 3 \times 3$, where each of the 3 channels (RGB) is processed separately.
+
+![](../assets/25-cnn-rgb.png)
+
+![](../assets/32-rbg-conv-layer.gif)
+
+![](../assets/32-rbg-conv-layer-1.gif)
 
 ### Multiple Filters
 
@@ -167,10 +174,14 @@ In Keras:
 
 Strides control how much the kernel moves over the image. The stride determines how much the filter shifts during each operation.
 
-![](../assets/28-stride.gif)
-
 - A stride of $(1, 1)$ means the kernel moves one step at a time in both horizontal and vertical directions.
+
+![](../assets/30-stride-1by1.gif)
+
 - Larger strides reduce the feature map size, making the model more computationally efficient but potentially losing some details.
+
+
+![](../assets/28-stride.gif)
 
 **Stride Formula**:
 
@@ -179,6 +190,11 @@ $$
 $$
 
 Where $s$ is the stride size.
+
+
+
+![](../assets/28.1-stride-1.gif)
+![](../assets/28.2-stride-2.gif)
 
 
 ### Pooling Layer
@@ -215,7 +231,16 @@ When configuring pooling, you need to specify:
 #### Pooling Types:
 
 1. **Max Pooling**: Selects the maximum value from each patch.
+
+![](../assets/35.3-pooling-max.gif)
+
 2. **Average Pooling**: Computes the average value from each patch.
+
+![](../assets/35.4-pooling-avg.png)
+
+
+![](../assets/35.2-pooling-max-avg.gif)
+
 3. **Global Pooling**:
    - **Global Max Pooling**: Reduces the entire feature map into a scalar by taking the maximum value across the entire map.
    - **Global Average Pooling**: Computes the average value of all the numbers in the feature map.
@@ -230,6 +255,8 @@ For example, if you have 3 feature maps of size 4x4:
 #### Disadvantages of Pooling:
 - **Translation Variance**: Pooling makes the network less sensitive to the precise location of features in the image. This is helpful for classification tasks but problematic for tasks where the exact location of an object is important (e.g., **object segmentation**).
 - For tasks like **image segmentation**, where pixel-level predictions are needed, pooling can lose important spatial information. Hence, pooling is generally avoided in segmentation tasks.
+
+![](../assets/35.1-pooling-drawback.gif)
 
 ---
 
@@ -266,3 +293,6 @@ Over the years, several CNN architectures have been developed and used for large
 
 **Key Difference**: 
 - CNNs are more specialized for image data and efficiently extract spatial features using convolution and pooling layers, whereas ANNs are more general and require a lot of parameters for image processing tasks.
+
+
+![](../assets/31-cnn-arch.png)
