@@ -296,3 +296,15 @@ Over the years, several CNN architectures have been developed and used for large
 
 
 ![](../assets/31-cnn-arch.png)
+
+
+---
+
+## Famous Architectures
+- 2010: ML Model: 28% Error Rate
+- 2011: ML Model: 25%
+- 2012: AlexNet: 16.4%
+- 2013: ZFNET: 11.7%
+- 2014: VGG: 7.3%
+- GoogleNet: 6.7%
+- ResNet: 3.5%
