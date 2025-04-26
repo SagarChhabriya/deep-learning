@@ -30,3 +30,23 @@ https://stackoverflow.com/questions/48720833/could-not-find-a-version-that-satis
 
 ### Tensorflow.org
 https://www.tensorflow.org/install/pip#windows-native_1
+
+
+## Outline
+1. ANN
+    - Fundamentals
+    - Optimizations
+2. CNN
+    - CNN
+    - Transfer Learning
+3. RNN
+    - RNN
+    - LSTM/GRU
+4. Seq2Seq Models
+    - Encoder/Decoder
+    - Attention
+    - Trasformers
+    - Fine-Tuning
+5. Unsupervised Learning using Deep Learning
+    - GAN
+    - AutoEncoders
