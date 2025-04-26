@@ -18,7 +18,7 @@ updated daily!!! Stay Tuned😊
 13. paper: [Backpropagation](https://cklixx.people.wm.edu/teaching/math400/Annette-paper.pdf)
 14. paper: [Dropout Layer](https://jmlr.org/papers/volume15/srivastava14a/srivastava14a.pdf)
 15. repo + app: [DL Optimizers Visualizer](https://github.com/lilipads/gradient_descent_viz/)
-
+16. [Free Computer Book ✨](https://freecomputerbooks.com/Understanding-Deep-Learning.html)
 
 ### Install Tensorflow Locally
 ```py
