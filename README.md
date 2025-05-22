@@ -20,6 +20,7 @@ updated daily!!! Stay Tuned😊
 15. repo + app: [DL Optimizers Visualizer](https://github.com/lilipads/gradient_descent_viz/)
 16. [Free Computer Book ✨](https://freecomputerbooks.com/Understanding-Deep-Learning.html)
 17. Tool: [Draw a Neural Nework](https://alexlenail.me/NN-SVG/)
+18. Playlist: [Deep Learning NPTEL-NOC IITM | Course](https://www.youtube.com/playlist?list=PLyqSpQzTE6M9gCgajvQbc68Hk_JKGBAYT)
 
 ### Install Tensorflow Locally
 ```py
