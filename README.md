@@ -21,6 +21,7 @@ updated daily!!! Stay Tuned😊
 16. [Free Computer Book ✨](https://freecomputerbooks.com/Understanding-Deep-Learning.html)
 17. Tool: [Draw a Neural Nework](https://alexlenail.me/NN-SVG/)
 18. Playlist: [Deep Learning NPTEL-NOC IITM | Course](https://www.youtube.com/playlist?list=PLyqSpQzTE6M9gCgajvQbc68Hk_JKGBAYT)
+19. blog: [What is RNN? @Amazon](https://aws.amazon.com/what-is/recurrent-neural-network/)
 
 ### Install Tensorflow Locally
 ```py
