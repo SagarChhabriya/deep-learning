@@ -1,5 +1,5 @@
 # Deep Learning
-updated daily!!! Stay Tuned😊
+updated frequently!!! Stay Tuned😊
 
 
 
