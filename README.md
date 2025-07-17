@@ -2,6 +2,8 @@
 updated frequently!!! Stay Tuned😊
 
 
+22. **Course site**: [Deep Learning Drizzle Book @Geoffrey Hinton](https://deep-learning-drizzle.github.io/)
+21. Book Site: [Understanding Deep Learning ](https://udlbook.github.io/udlbook/)
 20. Books: [AI in Visuals Books @Kdimensions](https://kdimensions.com/)
 19. Repo: [Krish Naik Data Science Resources](https://github.com/krishnaik06/The-Grand-Complete-Data-Science-Materials)
 18. Notes: [neuralnetworksanddeeplearning.com](http://neuralnetworksanddeeplearning.com/chap1.html)
