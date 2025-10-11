@@ -1,6 +1,7 @@
 # Deep Learning
 updated frequently!!! Stay Tuned😊
 
+24. **ComputerVision for Dummies**: [visiondummy.com/](https://www.visiondummy.com/)
 23. **Demo**: [Convolutional Neural Network (CNN) visual example](https://www.linkedin.com/posts/hoang-van-hao_a-brilliant-visual-that-captures-how-convolutional-ugcPost-7359067600183595009-2wXN?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEQCkOUBNA-E4AXpsYEvBxIlzGaGNCumDt4)
 22. **Course site**: [Deep Learning Drizzle Book @Geoffrey Hinton](https://deep-learning-drizzle.github.io/)
 21. Book Site: [Understanding Deep Learning ](https://udlbook.github.io/udlbook/)
