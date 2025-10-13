@@ -56,3 +56,6 @@ https://www.tensorflow.org/install/pip#windows-native_1
 5. Unsupervised Learning using Deep Learning
     - GAN
     - AutoEncoders
+
+
+<img width="800" height="811" alt="image" src="https://github.com/user-attachments/assets/0f6b2cc6-ff48-4e71-bfd5-a74115b0682a" />
