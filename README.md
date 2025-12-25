@@ -1,6 +1,8 @@
 # Deep Learning
 updated frequently!!! Stay Tuned😊
 
+
+25. **Deep Learning course: lecture slides and lab notebooks**: [This course is being taught at as part of Master Year 2 Data Science IP-Paris](https://m2dsupsdlclass.github.io/lectures-labs/) 
 24. **ComputerVision for Dummies**: [visiondummy.com/](https://www.visiondummy.com/)
 23. **Demo**: [Convolutional Neural Network (CNN) visual example](https://www.linkedin.com/posts/hoang-van-hao_a-brilliant-visual-that-captures-how-convolutional-ugcPost-7359067600183595009-2wXN?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEQCkOUBNA-E4AXpsYEvBxIlzGaGNCumDt4)
 22. **Course site**: [Deep Learning Drizzle Book @Geoffrey Hinton](https://deep-learning-drizzle.github.io/)
